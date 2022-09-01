@@ -1,7 +1,12 @@
-import { gql } from 'apollo-server';
+const { gql } =  require('apollo-server');
 
 
 exports.typeDefs = gql`
+    type Query {
+        hello : String
+        highlights : [Highlights]
+
+    }
     type Highlights {
         title : String!
         competition : String!
@@ -17,4 +22,6 @@ exports.typeDefs = gql`
         title : String!
         embed : String!
     }
+
+   
 `
