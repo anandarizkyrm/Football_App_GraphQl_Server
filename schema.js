@@ -5,7 +5,12 @@ exports.typeDefs = gql`
     type Query {
         hello : String
         highlights : [Highlights]
+        players: [player]
+        searchPlayer(search : String) : player 
 
+    }
+    type Tester {
+        hello : String
     }
     type Highlights {
         title : String!
@@ -23,5 +28,17 @@ exports.typeDefs = gql`
         embed : String!
     }
 
+
+    type player {
+        id: ID
+        firstName : String
+        lastName : String
+        age : Int
+        nationality : String
+        flag : String
+        club : String,
+        position : [String]
+        photo : String
+    }
    
 `
