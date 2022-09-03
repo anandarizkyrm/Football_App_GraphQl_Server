@@ -6,7 +6,8 @@ exports.typeDefs = gql`
         hello : String
         highlights : [Highlights]
         players: [player]
-        searchPlayer(search : String) : player 
+        searchPlayer(search : String) : [player]
+        getByPlayerId(id : ID) : player
 
     }
     type Tester {
@@ -18,7 +19,7 @@ exports.typeDefs = gql`
         matchviewUrl : String
         competitionUrl : String
         thumbnail : String!
-        data : String!
+        date : String!
         videos : [Video!]!    
     }
 

@@ -21,6 +21,12 @@ exports.Query = {
                             return x.toString().toLowerCase().includes(search.toLowerCase())
                         })
                    })
-      return filterData[0]
-    }
+      return filterData
+    },
+
+    getByPlayerId: (parent, { id }, { db }) => {
+      return db.playersDb.find((player) => player.id == id);
+    },
+
+ 
 }
