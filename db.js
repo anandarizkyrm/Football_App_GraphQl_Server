@@ -1,6 +1,7 @@
 const playersDb = [
     {
-        id: 1,
+        id: 154,
+        league : 61,
         firstName : "Messi",
         lastName : "Lionel",
         age : 35,
@@ -8,7 +9,8 @@ const playersDb = [
         flag : "https://www.pngfind.com/pngs/m/105-1056035_argentina-png-argentina-flag-icon-png-transparent-png.png",
         club : "Paris Saint Germain",
         position : ['AMF', 'CF', 'RW'],
-        photo : "https://i.pinimg.com/564x/7c/1a/35/7c1a355096eab3a1a7db6075d56fbcb6.jpg"
+        photo : "https://media.api-sports.io/football/players/874.png"
+        
     },
     {
         id: 2,
@@ -19,9 +21,21 @@ const playersDb = [
         flag : "https://www.iconspng.com/images/flag-of-portugal/flag-of-portugal.jpg",
         club : "Manchester United",
         position : ['CF'],
-        photo : "https://i.pinimg.com/564x/7c/1a/35/7c1a355096eab3a1a7db6075d56fbcb6.jpg"
+        photo : "https://media.api-sports.io/football/players/874.png"
+    },
+    {
+    	id : 276,
+    	firstName : "Neymar",
+    	league : 61,
+    	lastName : "junior",
+    	nationality : "Brazil",
+    	flag : "https://www.pngfind.com/pngs/m/105-1056035_argentina-png-argentina-flag-icon-png-transparent-png.png",
+    	club : "Paris Saint Germain",
+    	position : ["AMF", "LMF"],
+
     }
 ]
+
 
 exports.db = {
  playersDb
