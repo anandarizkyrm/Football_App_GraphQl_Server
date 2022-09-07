@@ -38,7 +38,8 @@ exports.typeDefs = gql`
         age : Int
         nationality : String
         flag : String
-        club : String,
+        club : String
+        logo : String
         position : [String]
         photo : String
     }
