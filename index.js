@@ -20,9 +20,6 @@ const server = new ApolloServer({
     cors: {
       origin: ["http://localhost:3000", "https://studio.apollographql.com"]
     },
-    plugins: [
-      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
-    ],
     context : {
       db
     }
