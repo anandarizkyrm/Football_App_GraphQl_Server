@@ -24,9 +24,33 @@ exports.Query = {
       return filterData
     },
 
-    getByPlayerId: (parent, { id }, { db }) => {
-      return db.playersDb.find((player) => player.id == id);
+    getByPlayerId : async(_, { id }) => {
+      const currentYear = new Date().getFullYear()
+      const url = `https://v3.football.api-sports.io/players?id=${id}&season=${currentYear}`
+      
+      const response = await fetch( url, {
+      	  headers: {
+      	    'Content-Type': 'application/json',
+      	    'x-rapidapi-key' : process.env.RAPID_API_KEY,
+      	    'x-rapidapi-host' : process.env.RAPID_API_HOST
+      	  },
+      	})
+      const responseJson = await response.json()
+      return responseJson.response[0] 
+  
     },
+
+    getLeague : async () =>{
+      const response = await fetch( "https://v3.football.api-sports.io/leagues", {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-rapidapi-key' : process.env.RAPID_API_KEY,
+          'x-rapidapi-host' : process.env.RAPID_API_HOST
+        },
+      })
+      const responseJson = await response.json()
+      return responseJson.response 
+    }
 
  
 }
