@@ -16,9 +16,13 @@ const server = new ApolloServer({
       Tester
     },
     csrfPrevention: true,
+    cache: "bounded",
     cors: {
       origin: ["http://localhost:3000", "https://studio.apollographql.com"]
     },
+    plugins: [
+      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+    ],
     context : {
       db
     }
