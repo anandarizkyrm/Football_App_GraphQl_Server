@@ -16,6 +16,9 @@ const server = new ApolloServer({
       Tester
     },
     csrfPrevention: true,
+    cors: {
+      origin: ["http://localhost:3000", "https://studio.apollographql.com"]
+    },
     context : {
       db
     }
