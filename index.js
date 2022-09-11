@@ -1,4 +1,5 @@
 const  { ApolloServer } = require('apollo-server-express');
+var cors = require('cors')
 // const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 const express = require('express');
 const http = require('http');
@@ -47,6 +48,10 @@ async function startApolloServer(typeDefs, resolvers) {
   const app = express();
 
   const httpServer = http.createServer(app);
+  const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+  }
 
   const server = new ApolloServer({
     typeDefs, 
@@ -66,12 +71,8 @@ async function startApolloServer(typeDefs, resolvers) {
   });
 
   await server.start();
+  app.use(cors(corsOptions))
 
-
-  const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true
-  }
   server.applyMiddleware({ app , cors : corsOptions});
 
   await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
