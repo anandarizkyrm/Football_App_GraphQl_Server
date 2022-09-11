@@ -18,7 +18,7 @@ const server = new ApolloServer({
     csrfPrevention: true,
     cache: "bounded",
     cors: {
-      origin: ["http://localhost:3000", "https://studio.apollographql.com"]
+      origin: ["http://localhost:3000", "https://footballappgraphqlserver-production.up.railway.app/"]
     },
     context : {
       db
