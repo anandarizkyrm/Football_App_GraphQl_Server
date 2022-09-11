@@ -12,7 +12,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const app = express()
+// const app = express()
 // const server = new ApolloServer({
 //     typeDefs, 
 //     resolvers : {
@@ -48,10 +48,11 @@ async function startApolloServer(typeDefs, resolvers) {
   const app = express();
 
   const httpServer = http.createServer(app);
-  const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true
-  }
+  const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
 
   const server = new ApolloServer({
     typeDefs, 
