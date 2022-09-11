@@ -1,6 +1,6 @@
 const  { ApolloServer } = require('apollo-server-express');
 var cors = require('cors')
-// const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
+const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 const express = require('express');
 const http = require('http');
 const {typeDefs} = require('./schema')
@@ -46,7 +46,7 @@ dotenv.config()
 
 async function startApolloServer(typeDefs, resolvers) {
   const app = express();
-
+  const {Query , Tester} = resolvers
   const httpServer = http.createServer(app);
   const corsOptions ={
     origin:'*', 
@@ -62,17 +62,17 @@ async function startApolloServer(typeDefs, resolvers) {
     },
     csrfPrevention: true,
     cache: "bounded",
-    cors: {
-      origin: ["http://localhost:3000", "https://footballappgraphqlserver-production.up.railway.app"]
-    },
-    // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+    // cors: {
+    //   origin: ["http://localhost:3000", "https://footballappgraphqlserver-production.up.railway.app"]
+    // },
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
     context : {
       db
     }
   });
+  app.use(cors(corsOptions))
 
   await server.start();
-  app.use(cors(corsOptions))
 
   server.applyMiddleware({ app , cors : corsOptions});
 
